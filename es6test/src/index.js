@@ -316,22 +316,43 @@
 
 
 //Symbol 全局标记
-let a = new String;
-let b = new Number;
-let c = new Boolean;
-let d = new Array;
-let e = new Object;
+//ES6引入了一种新的原始数据类型Symbol，表示独一无二的值
+//Symbol函数前不能使用new命令，否则会报错。这是因为生成的Symbol是一个原始类型的值，不是对象
+// let a = new String;
+// let b = new Number;
+// let c = new Boolean;
+// let d = new Array;
+// let e = new Object;
+// let f = Symbol();
+// console.log(typeof(f));
+// console.log(typeof(c));
 
-let f = Symbol();
-console.log(typeof(f));
-console.log(typeof(c));
+//Symbol的打印
+// let g = Symbol('aaa');
+// console.log(g);
+// console.log(g.toString());
 
-let g = Symbol('aaa');
-console.log(g);
-console.log(g.toString());
+//Symbol在对象中的应用
+// let aaa = Symbol();
+// let obj = {
+//     [aaa]:'111'
+// }
+// console.log(obj)
+// console.log(obj[aaa])
+// obj[aaa] = 'webbbbbb'
+// console.log(obj[aaa])
 
-let aaa = Symbol();
+//Symbol对象元素的保护作用
 let obj = {
-    [aaa]:'111'
+    name:'aaa',
+    skill:'web'
 }
+let age = Symbol();
+obj[age] = '18'
 console.log(obj)
+console.log('-------');
+for(let item in obj){
+    console.log(obj[item]);
+}
+console.log('-------');
+console.log(obj[age])
