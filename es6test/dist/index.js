@@ -1,9 +1,5 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 // var a = "hello"; //var 是全局声明
 // console.log(a);
 // window.onload = function(){
@@ -312,20 +308,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 //Symbol 全局标记
-var a = new String();
-var b = new Number();
-var c = new Boolean();
-var d = new Array();
-var e = new Object();
+//ES6引入了一种新的原始数据类型Symbol，表示独一无二的值
+//Symbol函数前不能使用new命令，否则会报错。这是因为生成的Symbol是一个原始类型的值，不是对象
+// let a = new String;
+// let b = new Number;
+// let c = new Boolean;
+// let d = new Array;
+// let e = new Object;
+// let f = Symbol();
+// console.log(typeof(f));
+// console.log(typeof(c));
 
-var f = Symbol();
-console.log(typeof f === 'undefined' ? 'undefined' : _typeof(f));
-console.log(typeof c === 'undefined' ? 'undefined' : _typeof(c));
+// let g = Symbol('aaa');
+// console.log(g);
+// console.log(g.toString());
 
-var g = Symbol('aaa');
-console.log(g);
-console.log(g.toString());
+// let aaa = Symbol();
+// let obj = {
+//     [aaa]:'111'
+// }
+// console.log(obj)
+// console.log(obj[aaa])
+// obj[aaa] = 'webbbbbb'
+// console.log(obj[aaa])
 
-var aaa = Symbol();
-var obj = _defineProperty({}, aaa, '111');
+var obj = {
+    name: 'aaa',
+    skill: 'web'
+};
+var age = Symbol();
+obj[age] = '18';
 console.log(obj);
+console.log('-------');
+for (var item in obj) {
+    console.log(obj[item]);
+}
+console.log('-------');
+console.log(obj[age]);
